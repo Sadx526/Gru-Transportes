@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoveLog | Transportes e Logística</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="#inicio"><span></span> Gru <span>Transportes</span></a>
+
+  <nav class="nav" id="nav">
+    <a href="#inicio">Início</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#rastreio">Rastreio</a>
+    <a href="#frete">Calcular Frete</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <button class="area-cliente"> Área do Cliente</button>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="tag"> Transporte rápido e seguro</div>
+
+        <h1>Sua carga no <span>destino certo.</span></h1>
+
+        <p>
+          Soluções completas em transporte, logística e entregas
+          para empresas e clientes em todo o Brasil.
+        </p>
+
+        <div class="beneficios">
+          <div><span></span> Mais segurança</div>
+          <div><span></span> Entregas no prazo</div>
+          <div><span></span> Cobertura nacional</div>
+          <div><span></span> Diversos tipos de carga</div>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn primary" href="#frete"> Calcular Frete →</a>
+          <a class="btn secondary" href="#rastreio">⌕ Rastrear Pedido</a>
+        </div>
+      </div>
+
+      <div class="tracking-card">
+        <div class="tracking-title">
+          <span class="box-icon"></span>
+          <div>
+            <h2>Rastreamento rápido</h2>
+            <p>Digite o código da sua encomenda.</p>
+          </div>
+        </div>
+
+        <div class="tracking-form">
+          <input id="codigoHero" type="text" placeholder="Ex: ML123456789BR">
+          <button onclick="rastrear('codigoHero', 'resultadoHero')">⌕ Rastrear</button>
+        </div>
+
+        <div class="resultado" id="resultadoHero"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numeros">
+    <div><strong>+15 mil</strong><span>Entregas realizadas</span></div>
+    <div><strong>+120</strong><span>Cidades atendidas</span></div>
+    <div><strong>98%</strong><span>Entregas no prazo</span></div>
+    <div><strong>24h</strong><span>Suporte ao cliente</span></div>
+  </section>
+
+  <section class="servicos section" id="servicos">
+    <div class="section-heading">
+      <span>NOSSOS SERVIÇOS</span>
+      <h2>Transporte para todas as necessidades</h2>
+      <p>Escolha a solução ideal para sua empresa ou sua entrega.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card"><div class="icon"></div><h3>Transporte Rodoviário</h3><p>Transporte seguro de cargas para diversas regiões do Brasil.</p><a href="#contato">Saiba mais →</a></article>
+      <article class="card"><div class="icon"></div><h3>Entrega Expressa</h3><p>Entregas rápidas para encomendas que precisam chegar com urgência.</p><a href="#contato">Saiba mais →</a></article>
+      <article class="card"><div class="icon"></div><h3>Logística Empresarial</h3><p>Gerenciamento completo de logística para pequenas e grandes empresas.</p><a href="#contato">Saiba mais →</a></article>
+      <article class="card"><div class="icon"></div><h3>Distribuição Nacional</h3><p>Distribuição estratégica para vários estados e cidades brasileiras.</p><a href="#contato">Saiba mais →</a></article>
+    </div>
+  </section>
+
+  <section class="rastreio section" id="rastreio">
+    <div class="section-heading light">
+      <span>ACOMPANHE SUA ENTREGA</span>
+      <h2>Rastreie sua encomenda</h2>
+      <p>Consulte em tempo real a situação da sua entrega.</p>
+    </div>
+
+    <div class="rastreio-form">
+      <input id="codigoRastreio" type="text" placeholder="Digite seu código de rastreamento">
+      <button onclick="rastrear('codigoRastreio', 'resultadoRastreio')"> Rastrear</button>
+    </div>
+    <div class="resultado resultado-light" id="resultadoRastreio"></div>
+  </section>
+
+  <section class="frete section" id="frete">
+    <div class="section-heading">
+      <span>ORÇAMENTO</span>
+      <h2>Calcule seu frete</h2>
+      <p>Faça uma simulação rápida do valor da entrega.</p>
+    </div>
+
+    <div class="frete-box">
+      <div class="campo"><label>CEP de origem</label><input id="origem" type="text" placeholder="00000-000"></div>
+      <div class="campo"><label>CEP de destino</label><input id="destino" type="text" placeholder="00000-000"></div>
+      <div class="campo"><label>Peso da encomenda (kg)</label><input id="peso" type="number" min="0.1" placeholder="10"></div>
+      <button class="btn-calcular" onclick="calcularFrete()">Calcular valor</button>
+      <div class="frete-resultado" id="valorFrete"></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div><h2>Precisa transportar sua carga?</h2><p>Entre em contato com nossa equipe e solicite um orçamento.</p></div>
+    <a href="#contato">Solicitar orçamento</a>
+  </section>
+</main>
+
+<footer id="contato">
+  <div class="footer-grid">
+    <div><h2> Move<span>Log</span></h2><p>Transporte inteligente, rápido e seguro para todo o Brasil.</p></div>
+    <div><h3>Empresa</h3><a href="#inicio">Sobre nós</a><a href="#servicos">Serviços</a><a href="#">Trabalhe conosco</a></div>
+    <div><h3>Atendimento</h3><a href="#rastreio">Central de ajuda</a><a href="#rastreio">Rastreamento</a><a href="#frete">Solicitar orçamento</a></div>
+    <div><h3>Contato</h3><p> (11) 99999-9999</p><p>✉️ contato@movelog.com.br</p><p> São Paulo - SP</p></div>
+  </div>
+  <div class="copyright">© 2026 MoveLog Transportes. Todos os direitos reservados.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
