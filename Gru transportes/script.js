@@ -13,10 +13,10 @@ function rastrear() {
     }
 
     resultado.innerHTML = `
-        📦 Pedido <strong>${codigo}</strong><br><br>
-        🚚 Status: Em transporte<br>
-        📍 Localização: Centro de Distribuição - São Paulo<br>
-        📅 Previsão de entrega: 2 dias úteis
+         Pedido <strong>${codigo}</strong><br><br>
+         Status: Em transporte<br>
+         Localização: Centro de Distribuição - São Paulo<br>
+         Previsão de entrega: 2 dias úteis
     `;
 }
 a
@@ -32,16 +32,16 @@ function rastrearSegundo() {
     if (codigo === "") {
 
         resultado.innerHTML =
-            "⚠️ Informe seu código de rastreamento.";
+            " Informe seu código de rastreamento.";
 
         return;
     }
 
     resultado.innerHTML = `
-        ✅ Encomenda encontrada!<br><br>
+         Encomenda encontrada!<br><br>
         Código: ${codigo}<br>
-        🚚 Em trânsito para o destino.<br>
-        📍 Última atualização: São Paulo - SP
+         Em trânsito para o destino.<br>
+         Última atualização: São Paulo - SP
     `;
 }
 
@@ -67,7 +67,7 @@ function calcularFrete() {
     ) {
 
         resultado.innerHTML =
-            "⚠️ Preencha todos os campos.";
+            " Preencha todos os campos.";
 
         return;
     }
@@ -76,14 +76,14 @@ function calcularFrete() {
         18 + (Number(peso) * 4.5);
 
     resultado.innerHTML = `
-        🚚 Frete estimado:
+         Frete estimado:
         <strong>
         R$ ${valor.toFixed(2).replace(".", ",")}
         </strong>
 
         <br><br>
 
-        📅 Prazo estimado:
+         Prazo estimado:
         3 a 5 dias úteis
     `;
 }
