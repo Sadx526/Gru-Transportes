@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Move On | Transportes e Logística</title>
+    <title>Moveon | Transforme o Brasil</title>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,20 +16,36 @@
 
 <header class="header">
 
-    <a class="logo" href="#inicio">
-        <img src="assets/logo.png" alt="Move On Transportes">
+    <a href="#inicio" class="logo" onclick="abrirAba('inicio')">
+        <img src="assets/logo.png" alt="Moveon">
     </a>
 
-    <nav class="nav" id="nav">
-        <a href="#inicio">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#rastreio">Rastreio</a>
-        <a href="#frete">Calcular Frete</a>
-        <a href="#contato">Contato</a>
+    <nav class="nav">
+
+        <a href="#inicio" onclick="abrirAba('inicio')">
+            Início
+        </a>
+
+        <a href="#especificacoes" onclick="abrirAba('especificacoes')">
+            Especificações
+        </a>
+
+        <a href="#mapa" onclick="abrirAba('mapa')">
+            Mapa
+        </a>
+
+        <a href="#alugar" onclick="abrirAba('alugar')">
+            Alugar espaço
+        </a>
+
+        <a href="#contato" onclick="abrirAba('contato')">
+            Contato
+        </a>
+
     </nav>
 
-    <button class="area-cliente">
-        Área do Cliente
+    <button class="btn-login" onclick="abrirLogin()">
+        Área do cliente
     </button>
 
 </header>
@@ -34,431 +53,964 @@
 
 <main>
 
-    <!-- HERO -->
+    <!-- ================= INÍCIO ================= -->
 
-    <section class="hero" id="inicio">
+    <section id="inicio" class="pagina ativa">
 
-        <div class="hero-overlay"></div>
+        <div class="hero">
 
-        <div class="hero-content">
+            <div class="hero-bg"></div>
 
-            <div class="hero-text">
+            <div class="hero-content">
 
-                <div class="tag">
-                    Transporte rápido e seguro
+                <div class="hero-text">
+
+                    <div class="tag">
+                        LOGÍSTICA INTELIGENTE
+                    </div>
+
+                    <h1>
+                        Transforme o espaço
+                        <span>que você tem</span>
+                        em oportunidade.
+                    </h1>
+
+                    <p>
+                        A Moveon conecta empresas que possuem espaço
+                        disponível em caminhões e armazéns com empresas
+                        que precisam transportar ou armazenar suas cargas.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="btn btn-red"
+                            onclick="abrirAba('alugar')">
+                            Encontrar espaço
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="abrirAba('mapa')">
+                            Ver mapa
+                        </button>
+
+                    </div>
+
                 </div>
 
-                <h1>
-                    Sua carga no
-                    <span>destino certo.</span>
-                </h1>
 
-                <p>
-                    Soluções completas em transporte, logística e entregas
-                    para empresas e clientes em todo o Brasil.
-                </p>
+                <div class="hero-card">
 
-                <div class="beneficios">
-
-                    <div>
-                        Mais segurança
+                    <div class="hero-card-top">
+                        <span class="online"></span>
+                        Plataforma ativa
                     </div>
 
-                    <div>
-                        Entregas no prazo
+                    <h2>
+                        Encontre espaço
+                        para sua carga.
+                    </h2>
+
+                    <p>
+                        Consulte rotas, veículos e armazéns
+                        disponíveis em diferentes regiões.
+                    </p>
+
+                    <div class="hero-search">
+
+                        <input
+                            id="heroDestino"
+                            type="text"
+                            placeholder="Para onde sua carga vai?">
+
+                        <button onclick="buscarHero()">
+                            Buscar
+                        </button>
+
                     </div>
-
-                    <div>
-                        Cobertura nacional
-                    </div>
-
-                    <div>
-                        Diversos tipos de carga
-                    </div>
-
-                </div>
-
-                <div class="hero-buttons">
-
-                    <a class="btn primary" href="#frete">
-                        Calcular Frete →
-                    </a>
-
-                    <a class="btn secondary" href="#rastreio">
-                        Rastrear Pedido
-                    </a>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- RASTREAMENTO -->
 
-            <div class="tracking-card">
+        <section class="numeros">
 
-                <div class="tracking-title">
+            <div>
+                <strong>+120</strong>
+                <span>Rotas disponíveis</span>
+            </div>
 
-                    <span class="box-icon">
-                        
-                    </span>
+            <div>
+                <strong>+80</strong>
+                <span>Espaços cadastrados</span>
+            </div>
 
-                    <div>
+            <div>
+                <strong>+35</strong>
+                <span>Cidades atendidas</span>
+            </div>
 
-                        <h2>
-                            Rastreamento rápido
-                        </h2>
+            <div>
+                <strong>24h</strong>
+                <span>Conexão entre empresas</span>
+            </div>
 
-                        <p>
-                            Digite o código da sua encomenda.
-                        </p>
+        </section>
 
-                    </div>
 
-                </div>
+        <section class="home-section">
 
-                <div class="tracking-form">
+            <div class="section-heading">
 
-                    <input
-                        id="codigoHero"
-                        type="text"
-                        placeholder="Ex: MOV123456789"
-                    >
+                <span>COMO FUNCIONA</span>
 
-                    <button
-                        onclick="rastrear('codigoHero', 'resultadoHero')"
-                    >
-                        Rastrear
-                    </button>
+                <h2>
+                    Um espaço vazio pode virar uma nova oportunidade.
+                </h2>
 
-                </div>
-
-                <div
-                    class="resultado"
-                    id="resultadoHero"
-                ></div>
+                <p>
+                    A Moveon aproveita a capacidade que já existe
+                    na logística brasileira.
+                </p>
 
             </div>
 
-        </div>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <span>01</span>
+
+                    <h3>
+                        Encontre
+                    </h3>
+
+                    <p>
+                        Informe origem, destino, carga e prazo.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>02</span>
+
+                    <h3>
+                        Compare
+                    </h3>
+
+                    <p>
+                        Veja caminhões e armazéns disponíveis
+                        para sua necessidade.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>03</span>
+
+                    <h3>
+                        Conecte
+                    </h3>
+
+                    <p>
+                        Escolha a opção e entre em contato
+                        com o responsável pelo espaço.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="dark-section">
+
+            <div class="dark-content">
+
+                <div>
+
+                    <span>POR QUE MOVEON?</span>
+
+                    <h2>
+                        Menos espaço vazio.
+                        Mais eficiência.
+                    </h2>
+
+                </div>
+
+                <p>
+                    Empresas que já possuem caminhões ou armazéns
+                    podem aproveitar sua capacidade disponível,
+                    enquanto outras empresas encontram alternativas
+                    para suas cargas.
+                </p>
+
+            </div>
+
+        </section>
 
     </section>
 
 
-    <!-- NÚMEROS -->
+    <!-- ================= ESPECIFICAÇÕES ================= -->
 
-    <section class="numeros">
+    <section id="especificacoes" class="pagina">
 
-        <div>
-            <strong>+15 mil</strong>
-            <span>Entregas realizadas</span>
-        </div>
+        <div class="page-header">
 
-        <div>
-            <strong>+120</strong>
-            <span>Cidades atendidas</span>
-        </div>
+            <span>ESPECIFICAÇÕES</span>
 
-        <div>
-            <strong>98%</strong>
-            <span>Entregas no prazo</span>
-        </div>
-
-        <div>
-            <strong>24h</strong>
-            <span>Suporte ao cliente</span>
-        </div>
-
-    </section>
-
-
-    <!-- SERVIÇOS -->
-
-    <section class="servicos section" id="servicos">
-
-        <div class="section-heading">
-
-            <span>
-                NOSSOS SERVIÇOS
-            </span>
-
-            <h2>
-                Transporte para todas as necessidades
-            </h2>
+            <h1>
+                Cada carga tem uma necessidade.
+            </h1>
 
             <p>
-                Escolha a solução ideal para sua empresa ou sua entrega.
+                Encontre o tipo de transporte ou armazenamento
+                adequado para o que você precisa.
             </p>
 
         </div>
 
 
-        <div class="cards">
+        <div class="spec-grid">
 
-            <article class="card">
+            <article class="spec-card">
 
-                <div class="icon">
-                    
+                <div class="spec-icon">
+                    CARGA
                 </div>
 
                 <h3>
-                    Transporte Rodoviário
+                    Carga pequena
                 </h3>
 
                 <p>
-                    Transporte seguro de cargas para diversas regiões do Brasil.
+                    Encontre espaço disponível para volumes menores
+                    sem precisar contratar um veículo inteiro.
                 </p>
 
-                <a href="#contato">
-                    Saiba mais →
-                </a>
+                <span>
+                    Ideal para pequenas empresas
+                </span>
 
             </article>
 
 
-            <article class="card">
+            <article class="spec-card">
 
-                <div class="icon">
-                    
+                <div class="spec-icon">
+                    MÓVEIS
                 </div>
 
                 <h3>
-                    Entrega Expressa
+                    Móveis e mudanças
                 </h3>
 
                 <p>
-                    Entregas rápidas para encomendas que precisam chegar com urgência.
+                    Espaços disponíveis em veículos compatíveis
+                    com móveis, caixas e outros objetos.
                 </p>
 
-                <a href="#contato">
-                    Saiba mais →
-                </a>
+                <span>
+                    Residencial e empresarial
+                </span>
 
             </article>
 
 
-            <article class="card">
+            <article class="spec-card">
 
-                <div class="icon">
-                    
+                <div class="spec-icon">
+                    CARGA
                 </div>
 
                 <h3>
-                    Logística Empresarial
+                    Carga empresarial
                 </h3>
 
                 <p>
-                    Gerenciamento completo de logística para pequenas e grandes empresas.
+                    Soluções para empresas que precisam transportar
+                    mercadorias entre diferentes cidades.
                 </p>
 
-                <a href="#contato">
-                    Saiba mais →
-                </a>
+                <span>
+                    Rotas nacionais
+                </span>
 
             </article>
 
 
-            <article class="card">
+            <article class="spec-card">
 
-                <div class="icon">
-                    🇧🇷
+                <div class="spec-icon">
+                    ESTOQUE
                 </div>
 
                 <h3>
-                    Distribuição Nacional
+                    Armazenamento
                 </h3>
 
                 <p>
-                    Distribuição estratégica para vários estados e cidades brasileiras.
+                    Encontre espaços para armazenar produtos,
+                    equipamentos ou mercadorias por determinado período.
                 </p>
 
-                <a href="#contato">
-                    Saiba mais →
-                </a>
+                <span>
+                    Curto e médio prazo
+                </span>
 
             </article>
 
         </div>
 
-    </section>
 
+        <section class="info-banner">
 
-    <!-- RASTREIO -->
+            <div>
 
-    <section class="rastreio section" id="rastreio">
+                <span>VOCÊ DEFINE</span>
 
-        <div class="section-heading light">
+                <h2>
+                    Origem, destino, peso, volume e tempo.
+                </h2>
 
-            <span>
-                ACOMPANHE SUA ENTREGA
-            </span>
+                <p>
+                    A plataforma utiliza essas informações para
+                    encontrar opções compatíveis.
+                </p>
 
-            <h2>
-                Rastreie sua encomenda
-            </h2>
-
-            <p>
-                Consulte em tempo real a situação da sua entrega.
-            </p>
-
-        </div>
-
-
-        <div class="rastreio-form">
-
-            <input
-                id="codigoRastreio"
-                type="text"
-                placeholder="Digite seu código de rastreamento"
-            >
+            </div>
 
             <button
-                onclick="rastrear('codigoRastreio', 'resultadoRastreio')"
-            >
-                Rastrear
+                class="btn btn-red"
+                onclick="abrirAba('alugar')">
+                Procurar espaço
+            </button>
+
+        </section>
+
+    </section>
+
+
+    <!-- ================= MAPA ================= -->
+
+    <section id="mapa" class="pagina">
+
+        <div class="page-header">
+
+            <span>MAPA LOGÍSTICO</span>
+
+            <h1>
+                Veja onde existem oportunidades.
+            </h1>
+
+            <p>
+                Consulte rotas, veículos e armazéns disponíveis
+                em diferentes regiões.
+            </p>
+
+        </div>
+
+
+        <div class="map-tools">
+
+            <div class="map-search">
+
+                <input
+                    id="buscaMapa"
+                    type="text"
+                    placeholder="Digite uma cidade ou destino">
+
+                <button onclick="buscarMapa()">
+                    Buscar
+                </button>
+
+            </div>
+
+            <div class="map-filters">
+
+                <button
+                    class="map-filter ativo"
+                    onclick="filtrarMapa('todos', this)">
+                    Todos
+                </button>
+
+                <button
+                    class="map-filter"
+                    onclick="filtrarMapa('transporte', this)">
+                    Transportes
+                </button>
+
+                <button
+                    class="map-filter"
+                    onclick="filtrarMapa('armazem', this)">
+                    Armazéns
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="map-layout">
+
+            <div id="map"></div>
+
+
+            <div class="map-results" id="mapResults">
+
+                <h3>
+                    Espaços disponíveis
+                </h3>
+
+                <div class="location-card transporte">
+
+                    <div class="location-type">
+                        TRANSPORTE
+                    </div>
+
+                    <h4>
+                        São Paulo → Campinas
+                    </h4>
+
+                    <p>
+                        Caminhão com espaço disponível
+                    </p>
+
+                    <strong>
+                        12 m³ · até 800 kg
+                    </strong>
+
+                </div>
+
+
+                <div class="location-card armazem">
+
+                    <div class="location-type">
+                        ARMAZÉM
+                    </div>
+
+                    <h4>
+                        Guarulhos - SP
+                    </h4>
+
+                    <p>
+                        Espaço para armazenamento
+                    </p>
+
+                    <strong>
+                        120 m³ disponíveis
+                    </strong>
+
+                </div>
+
+
+                <div class="location-card transporte">
+
+                    <div class="location-type">
+                        TRANSPORTE
+                    </div>
+
+                    <h4>
+                        São Paulo → Rio de Janeiro
+                    </h4>
+
+                    <p>
+                        Veículo com espaço parcial
+                    </p>
+
+                    <strong>
+                        8 m³ · até 500 kg
+                    </strong>
+
+                </div>
+
+
+                <div class="location-card armazem">
+
+                    <div class="location-type">
+                        ARMAZÉM
+                    </div>
+
+                    <h4>
+                        Campinas - SP
+                    </h4>
+
+                    <p>
+                        Galpão com espaço disponível
+                    </p>
+
+                    <strong>
+                        250 m³ disponíveis
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ALUGAR ================= -->
+
+    <section id="alugar" class="pagina">
+
+        <div class="page-header">
+
+            <span>ENCONTRE UM ESPAÇO</span>
+
+            <h1>
+                O que você precisa?
+            </h1>
+
+            <p>
+                Escolha entre transporte ou armazenamento
+                e informe as características da sua necessidade.
+            </p>
+
+        </div>
+
+
+        <div class="choice-buttons">
+
+            <button
+                class="choice ativo"
+                onclick="mostrarAluguel('transporte', this)">
+                Transporte
+            </button>
+
+            <button
+                class="choice"
+                onclick="mostrarAluguel('armazem', this)">
+                Armazém
             </button>
 
         </div>
 
 
+        <!-- TRANSPORTE -->
+
         <div
-            class="resultado resultado-light"
-            id="resultadoRastreio"
-        ></div>
+            class="aluguel-box"
+            id="filtroTransporte">
 
-    </section>
+            <div class="box-heading">
 
+                <span>01</span>
 
-    <!-- FRETE -->
+                <div>
 
-    <section class="frete section" id="frete">
+                    <h2>
+                        Alugar espaço em transporte
+                    </h2>
 
-        <div class="section-heading">
+                    <p>
+                        Encontre veículos que já possuem uma rota
+                        compatível com sua carga.
+                    </p>
 
-            <span>
-                ORÇAMENTO
-            </span>
-
-            <h2>
-                Calcule seu frete
-            </h2>
-
-            <p>
-                Faça uma simulação rápida do valor da entrega.
-            </p>
-
-        </div>
-
-
-        <div class="frete-box">
-
-            <div class="campo">
-
-                <label>
-                    CEP de origem
-                </label>
-
-                <input
-                    id="origem"
-                    type="text"
-                    placeholder="00000-000"
-                >
+                </div>
 
             </div>
 
 
-            <div class="campo">
+            <div class="form-grid">
 
-                <label>
-                    CEP de destino
-                </label>
+                <div class="campo">
 
-                <input
-                    id="destino"
-                    type="text"
-                    placeholder="00000-000"
-                >
+                    <label>
+                        Localização de origem
+                    </label>
 
-            </div>
+                    <input
+                        id="transOrigem"
+                        type="text"
+                        placeholder="Ex: São Paulo - SP">
+
+                </div>
 
 
-            <div class="campo">
+                <div class="campo">
 
-                <label>
-                    Peso da encomenda (kg)
-                </label>
+                    <label>
+                        Destino
+                    </label>
 
-                <input
-                    id="peso"
-                    type="number"
-                    min="0.1"
-                    placeholder="10"
-                >
+                    <input
+                        id="transDestino"
+                        type="text"
+                        placeholder="Ex: Campinas - SP">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Volume (m³)
+                    </label>
+
+                    <input
+                        id="transVolume"
+                        type="number"
+                        min="0"
+                        placeholder="Ex: 8">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Peso (kg)
+                    </label>
+
+                    <input
+                        id="transPeso"
+                        type="number"
+                        min="0"
+                        placeholder="Ex: 500">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Quando precisa?
+                    </label>
+
+                    <input
+                        id="transTempo"
+                        type="date">
+
+                </div>
 
             </div>
 
 
             <button
-                class="btn-calcular"
-                onclick="calcularFrete()"
-            >
-                Calcular valor
+                class="btn btn-red btn-full"
+                onclick="buscarTransporte()">
+                Procurar transportes
             </button>
 
 
             <div
-                class="frete-resultado"
-                id="valorFrete"
-            ></div>
+                class="resultados"
+                id="resultadoTransporte">
+            </div>
+
+        </div>
+
+
+        <!-- ARMAZÉM -->
+
+        <div
+            class="aluguel-box hidden"
+            id="filtroArmazem">
+
+            <div class="box-heading">
+
+                <span>02</span>
+
+                <div>
+
+                    <h2>
+                        Alugar espaço em armazém
+                    </h2>
+
+                    <p>
+                        Encontre galpões e espaços disponíveis
+                        para armazenar seus produtos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="campo">
+
+                    <label>
+                        Localização
+                    </label>
+
+                    <input
+                        id="armLocal"
+                        type="text"
+                        placeholder="Ex: Guarulhos - SP">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Capacidade necessária (m³)
+                    </label>
+
+                    <input
+                        id="armCapacidade"
+                        type="number"
+                        min="0"
+                        placeholder="Ex: 100">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Tempo de armazenamento
+                    </label>
+
+                    <select id="armTempo">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option>
+                            Até 7 dias
+                        </option>
+
+                        <option>
+                            8 a 30 dias
+                        </option>
+
+                        <option>
+                            1 a 3 meses
+                        </option>
+
+                        <option>
+                            Mais de 3 meses
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn btn-red btn-full"
+                onclick="buscarArmazem()">
+                Procurar armazéns
+            </button>
+
+
+            <div
+                class="resultados"
+                id="resultadoArmazem">
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- CTA -->
+    <!-- ================= CONTATO ================= -->
 
-    <section class="cta">
+    <section id="contato" class="pagina">
 
-        <div>
+        <div class="page-header">
 
-            <h2>
-                Precisa transportar sua carga?
-            </h2>
+            <span>CONTATO</span>
+
+            <h1>
+                Vamos transformar a logística juntos.
+            </h1>
 
             <p>
-                Entre em contato com nossa equipe e solicite um orçamento.
+                Entre em contato para tirar dúvidas,
+                cadastrar sua empresa ou conhecer a plataforma.
             </p>
 
         </div>
 
-        <a href="#contato">
-            Solicitar orçamento
-        </a>
+
+        <div class="contato-grid">
+
+            <div class="contato-info">
+
+                <h2>
+                    Fale com a Moveon
+                </h2>
+
+                <p>
+                    Estamos criando uma nova forma de aproveitar
+                    a capacidade disponível na logística brasileira.
+                </p>
+
+
+                <div class="contato-item">
+
+                    <span>
+                        TELEFONE
+                    </span>
+
+                    <strong>
+                        (11) 94776-7881
+                    </strong>
+
+                </div>
+
+
+                <div class="contato-item">
+
+                    <span>
+                        E-MAIL
+                    </span>
+
+                    <strong>
+                        contato@moveon.com.br
+                    </strong>
+
+                </div>
+
+
+                <div class="contato-item">
+
+                    <span>
+                        LOCALIZAÇÃO
+                    </span>
+
+                    <strong>
+                        São Paulo - SP
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <form
+                class="contato-form"
+                onsubmit="enviarContato(event)">
+
+                <div class="campo">
+
+                    <label>
+                        Nome
+                    </label>
+
+                    <input
+                        id="contatoNome"
+                        type="text"
+                        required
+                        placeholder="Seu nome">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        E-mail
+                    </label>
+
+                    <input
+                        id="contatoEmail"
+                        type="email"
+                        required
+                        placeholder="seu@email.com">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Mensagem
+                    </label>
+
+                    <textarea
+                        id="contatoMensagem"
+                        rows="5"
+                        required
+                        placeholder="Como podemos ajudar?"></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-red btn-full">
+                    Enviar mensagem
+                </button>
+
+
+                <div id="contatoResultado"></div>
+
+            </form>
+
+        </div>
 
     </section>
 
 </main>
 
 
-<!-- FOOTER -->
+<footer>
 
-<footer id="contato">
-
-    <div class="footer-grid">
+    <div class="footer-main">
 
         <div>
 
             <img
-                class="footer-logo"
                 src="assets/logo.png"
-                alt="Move On Transportes"
-            >
+                class="footer-logo"
+                alt="Moveon">
 
             <p>
-                Transporte inteligente, rápido e seguro
-                para todo o Brasil.
+                Moveon: transforme o Brasil.
             </p>
+
+            <p>
+                Conectando espaços disponíveis
+                a novas oportunidades logísticas.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Plataforma
+            </h3>
+
+            <a href="#inicio" onclick="abrirAba('inicio')">
+                Início
+            </a>
+
+            <a href="#especificacoes" onclick="abrirAba('especificacoes')">
+                Especificações
+            </a>
+
+            <a href="#mapa" onclick="abrirAba('mapa')">
+                Mapa
+            </a>
+
+            <a href="#alugar" onclick="abrirAba('alugar')">
+                Alugar espaço
+            </a>
 
         </div>
 
@@ -469,59 +1021,17 @@
                 Empresa
             </h3>
 
-            <a href="#inicio">
-                Sobre nós
-            </a>
-
-            <a href="#servicos">
-                Serviços
+            <a href="#contato" onclick="abrirAba('contato')">
+                Contato
             </a>
 
             <a href="#">
-                Trabalhe conosco
+                Termos de uso
             </a>
 
-        </div>
-
-
-        <div>
-
-            <h3>
-                Atendimento
-            </h3>
-
-            <a href="#rastreio">
-                Central de ajuda
+            <a href="#">
+                Privacidade
             </a>
-
-            <a href="#rastreio">
-                Rastreamento
-            </a>
-
-            <a href="#frete">
-                Solicitar orçamento
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Contato
-            </h3>
-
-            <p>
-                (11) 94776-7881
-            </p>
-
-            <p>
-                diego.9036@colegioprogresso.g12.br
-            </p>
-
-            <p>
-                São Paulo - SP
-            </p>
 
         </div>
 
@@ -530,13 +1040,14 @@
 
     <div class="copyright">
 
-        © 2026 Move On Transportes.
-        Todos os direitos reservados.
+        © 2026 Moveon — Transforme o Brasil.
 
     </div>
 
 </footer>
 
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script src="script.js"></script>
 
